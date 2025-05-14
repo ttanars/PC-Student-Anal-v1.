@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC|ระบบวิเคราะห์ผู้เรียนรายบุคคล v1 </title> <link rel="shortcut icon" type="image/png" href="https://img2.pic.in.th/pic/Pakchong_School-removebg-preview.png">
+    <title>PC|ระบบวิเคราะห์ผู้เรียนรายบุคคล v3 </title> <link rel="shortcut icon" type="image/png" href="https://img2.pic.in.th/pic/Pakchong_School-removebg-preview.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -111,7 +111,7 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
         .nav-button.active { background-color: var(--secondary-color); color: white; transform: translateY(-2px); }
         .nav-button:not(.active):hover { background-color: #e0f7fa; }
         .form-container { display: none; } #dashboard-container { display: block; }
-        .dashboard-header { text-align: center; margin-bottom: 25px; background-color : #fcff63; color:#0a0a0a; font-size: 1.7em; font-mt-5; font-mb-5; font-weight: 600; border-bottom: 2px solid var(--step-line-color); padding-bottom: 5px; padding-top: 5px; margin-top: 5px; margin-bottom: 5px;}
+        .dashboard-header { text-align: center; background-color : #fcff63; color:#0a0a0a; font-size: 1.7em; font-mt-5; font-mb-5; font-weight: 600; border-bottom: 2px solid var(--step-line-color); padding-bottom: 20px; padding-top: 20px; margin-top: 5px; margin-bottom: 20px;}
         .dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .dashboard-card { padding: 15px; border-radius: 10px; color: white; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease; }
         .dashboard-card:hover { transform: translateY(-3px); } .dashboard-card h3 { font-size: 1.6em; margin-bottom: 8px; font-weight: 600; } .dashboard-card .count { font-size: 1.9em; font-weight: bold; display: block; padding-bottom: 0px; padding-top: 0px; }
@@ -141,6 +141,7 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
 		h5 { margin-bottom: 0px; padding-bottom: 0px; font-size: 1.5em; font-weight: 800; }
 		h6 { margin-bottom: 0px; padding-bottom: 2px; font-size: 1.0em; font-weight: 300; }
 		h7 { margin-top: -10px; padding-bottom: 0px; font-size: 1.2em; font-weight: 600; }
+		h8 { padding-bottom: 0px; border-bottom: 2px solid var(--step-line-color); border-top: 2px solid var(--step-line-color); font-size: 1.0.em; font-weight: 600; }
 		
         .progress-container { margin-top: 15px; margin-bottom: 35px; }
         .step-indicator-container { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 0 10px; }
@@ -170,7 +171,7 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
         .prev-btn { background-color: var(--prev-button-bg); } .prev-btn:hover { background-color: var(--prev-button-hover-bg); }
         button:disabled:not(.status-recorded):not(.action-pdf-btn) { background-color: #cccccc; cursor: not-allowed; transform: none; opacity: 0.7; } /* Exclude pdf disabled style */
         .checkbox-group label { display: flex; align-items: center; margin-bottom: 12px; font-weight: normal; cursor: pointer; } .checkbox-group input[type="checkbox"] { width: auto; margin-right: 12px; accent-color: var(--secondary-color); transform: scale(1.15); cursor: pointer; }
-		.banner img { width: 100%; max-height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; display: block; background-color: #eee; border: 1px solid var(--border-color); }
+		.banner img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; display: block; background-color: #eee; border: 1px solid var(--border-color); }
         #loadingMessage, #successMessage, #errorMessage { display: none; text-align: center; margin-top: 20px; }
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
         .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
@@ -232,15 +233,15 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
 				 
 				 
         <div id="dashboard-container">
-             <h5 class="dashboard-header mt-1 mb-1">Dashboard สรุปข้อมูลนักเรียน</h5>
+             <h5 class="dashboard-header">Dashboard สรุปข้อมูลนักเรียน</h5>
              <div class="dashboard-cards position-relative">
-                 <div class="dashboard-card card-m1"><h3>ม.1</h3><span class="count" id="count-m1">0</span></div>
-                 <div class="dashboard-card card-m2"><h3>ม.2</h3><span class="count" id="count-m2">0</span></div>
-                 <div class="dashboard-card card-m3"><h3>ม.3</h3><span class="count" id="count-m3">0</span></div>
-                 <div class="dashboard-card card-m4"><h3>ม.4</h3><span class="count" id="count-m4">0</span></div>
-                 <div class="dashboard-card card-m5"><h3>ม.5</h3><span class="count" id="count-m5">0</span></div>
-                 <div class="dashboard-card card-m6"><h3>ม.6</h3><span class="count" id="count-m6">0</span></div>
-                 <div class="dashboard-card card-total"><h3>รวมบันทึกแล้ว</h3><span class="count" id="count-total">0</span></div>
+                 <div class="dashboard-card card-m1"><h8>ม.1</h8><span class="count" id="count-m1">0</span></div>
+                 <div class="dashboard-card card-m2"><h8>ม.2</h8><span class="count" id="count-m2">0</span></div>
+                 <div class="dashboard-card card-m3"><h8>ม.3</h8><span class="count" id="count-m3">0</span></div>
+                 <div class="dashboard-card card-m4"><h8>ม.4</h8><span class="count" id="count-m4">0</span></div>
+                 <div class="dashboard-card card-m5"><h8>ม.5</h8><span class="count" id="count-m5">0</span></div>
+                 <div class="dashboard-card card-m6"><h8>ม.6</h8><span class="count" id="count-m6">0</span></div>
+                 <div class="dashboard-card card-total"><h8>รวมบันทึกแล้ว</h8><span class="count" id="count-total">0</span></div>
              </div>
              <div class="datatable-container">
                   <div id="loadingOverlay" class="loading-overlay hidden"><i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;กำลังโหลดข้อมูล...</div>
@@ -406,20 +407,20 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
 					  <div class="form-group"> <label id="reasoning-label">2. การใช้เหตุผล</label> <div class="radio-group" role="radiogroup" aria-labelledby="reasoning-label"> <label><input type="radio" name="reasoning" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="reasoning" value="ดี"> ดี</label> <label><input type="radio" name="reasoning" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
                       <div class="form-group"> <label id="learningAbility-label">3. ความสามารถในการเรียนรู้</label> <div class="radio-group" role="radiogroup" aria-labelledby="learningAbility-label"> <label><input type="radio" name="learningAbility" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="learningAbility" value="ดี"> ดี</label> <label><input type="radio" name="learningAbility" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
                       <div class="form-group"> <label id="read-label">4. ความสามารถในการอ่าน</label> <div class="radio-group" role="radiogroup" aria-labelledby="creativity-label"> <label><input type="radio" name="read" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="read" value="ดี"> ดี</label> <label><input type="radio" name="read" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="interest-label">5. ความสนใจและสมาธิในการเรียนรู้</label> <div class="radio-group" role="radiogroup" aria-labelledby="interest-label"> <label><input type="radio" name="interest" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="interest" value="ดี"> ดี</label> <label><input type="radio" name="interest" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-					  <div class="form-group"> <label id="problemSolving-label">6. การแก้ปัญหาเฉพาะหน้า</label> <div class="radio-group" role="radiogroup" aria-labelledby="problemSolving-label"> <label><input type="radio" name="problemSolving" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="problemSolving" value="ดี"> ดี</label> <label><input type="radio" name="problemSolving" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="learningFocus-label">7. ความสนใจใฝ่เรียนรู้</label> <div class="radio-group" role="radiogroup" aria-labelledby="learningFocus-label"> <label><input type="radio" name="learningFocus" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="learningFocus" value="ดี"> ดี</label> <label><input type="radio" name="learningFocus" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+					  <div class="form-group"> <label id="problemSolving-label">5. การแก้ปัญหาเฉพาะหน้า</label> <div class="radio-group" role="radiogroup" aria-labelledby="problemSolving-label"> <label><input type="radio" name="problemSolving" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="problemSolving" value="ดี"> ดี</label> <label><input type="radio" name="problemSolving" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
 					  <div class="button-group"> <button type="button" class="prev-btn" onclick="prevStep()"><i class="fas fa-arrow-left"></i> ย้อนกลับ</button> <button type="button" class="next-btn" onclick="nextStep()">ถัดไป <i class="fas fa-arrow-right"></i></button> </div>
                  </div>
                  <div class="form-step" data-step="5">
                       <h2>ตอนที่ 5: ความพร้อมด้านร่างกาย และพฤติกรรม</h2>
-                      <div class="form-group"> <label id="emotionControl-label">1. การควบคุมอารมณ์</label> <div class="radio-group" role="radiogroup" aria-labelledby="emotionControl-label"> <label><input type="radio" name="emotionControl" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="emotionControl" value="ดี"> ดี</label> <label><input type="radio" name="emotionControl" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="determination-label">2. ความมุ่งมั่น ขยัน อดทน</label> <div class="radio-group" role="radiogroup" aria-labelledby="determination-label"> <label><input type="radio" name="determination" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="determination" value="ดี"> ดี</label> <label><input type="radio" name="determination" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="responsibility-label">3. ความรับผิดชอบ</label> <div class="radio-group" role="radiogroup" aria-labelledby="responsibility-label"> <label><input type="radio" name="responsibility" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="responsibility" value="ดี"> ดี</label> <label><input type="radio" name="responsibility" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="expression-label">4. ความสามารถในการแสดงออก</label> <div class="radio-group" role="radiogroup" aria-labelledby="expression-label"> <label><input type="radio" name="expression" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="expression" value="ดี"> ดี</label> <label><input type="radio" name="expression" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-					  <div class="form-group"> <label id="physicalHealth-label">5. สุขภาพร่างกาย</label> <div class="radio-group" role="radiogroup" aria-labelledby="physicalHealth-label"> <label><input type="radio" name="physicalHealth" value="แข็งแรง" required> แข็งแรง</label> <label><input type="radio" name="physicalHealth" value="ปกติ"> ปกติ</label> <label><input type="radio" name="physicalHealth" value="อ่อนแอ"> อ่อนแอ</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="growth-label">6. การเจริญเติบโตเหมาะสมกับวัย</label> <div class="radio-group" role="radiogroup" aria-labelledby="growth-label"> <label><input type="radio" name="growth" value="สมส่วน" required> สมส่วน</label> <label><input type="radio" name="growth" value="ค่อนข้างสมส่วน"> ค่อนข้างสมส่วน</label> <label><input type="radio" name="growth" value="ไม่สมส่วน"> ไม่สมส่วน</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
-                      <div class="form-group"> <label id="mentalHealth-label">7. สุขภาพจิต</label> <div class="radio-group" role="radiogroup" aria-labelledby="mentalHealth-label"> <label><input type="radio" name="mentalHealth" value="ร่าเริง แจ่มใส" required> ร่าเริง แจ่มใส</label> <label><input type="radio" name="mentalHealth" value="ปกติ"> ปกติ</label> <label><input type="radio" name="mentalHealth" value="ซึมเศร้า/วิตกกังวล"> ซึมเศร้า/วิตกกังวล</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="learningFocus-label">1. ความสนใจใฝ่เรียนรู้</label> <div class="radio-group" role="radiogroup" aria-labelledby="learningFocus-label"> <label><input type="radio" name="learningFocus" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="learningFocus" value="ดี"> ดี</label> <label><input type="radio" name="learningFocus" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+					  <div class="form-group"> <label id="emotionControl-label">2. การควบคุมอารมณ์</label> <div class="radio-group" role="radiogroup" aria-labelledby="emotionControl-label"> <label><input type="radio" name="emotionControl" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="emotionControl" value="ดี"> ดี</label> <label><input type="radio" name="emotionControl" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="determination-label">3. ความมุ่งมั่น ขยัน อดทน</label> <div class="radio-group" role="radiogroup" aria-labelledby="determination-label"> <label><input type="radio" name="determination" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="determination" value="ดี"> ดี</label> <label><input type="radio" name="determination" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="responsibility-label">4. ความรับผิดชอบ</label> <div class="radio-group" role="radiogroup" aria-labelledby="responsibility-label"> <label><input type="radio" name="responsibility" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="responsibility" value="ดี"> ดี</label> <label><input type="radio" name="responsibility" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="expression-label">5. ความสามารถในการแสดงออก</label> <div class="radio-group" role="radiogroup" aria-labelledby="expression-label"> <label><input type="radio" name="expression" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="expression" value="ดี"> ดี</label> <label><input type="radio" name="expression" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+					  <div class="form-group"> <label id="interest-label">6. ความสนใจและสมาธิในการเรียนรู้</label> <div class="radio-group" role="radiogroup" aria-labelledby="interest-label"> <label><input type="radio" name="interest" value="ดีมาก" required> ดีมาก</label> <label><input type="radio" name="interest" value="ดี"> ดี</label> <label><input type="radio" name="interest" value="พอใช้"> พอใช้</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+					  <div class="form-group"> <label id="physicalHealth-label">7. สุขภาพร่างกาย</label> <div class="radio-group" role="radiogroup" aria-labelledby="physicalHealth-label"> <label><input type="radio" name="physicalHealth" value="แข็งแรง" required> แข็งแรง</label> <label><input type="radio" name="physicalHealth" value="ปกติ"> ปกติ</label> <label><input type="radio" name="physicalHealth" value="อ่อนแอ"> อ่อนแอ</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="growth-label">8. การเจริญเติบโตเหมาะสมกับวัย</label> <div class="radio-group" role="radiogroup" aria-labelledby="growth-label"> <label><input type="radio" name="growth" value="สมส่วน" required> สมส่วน</label> <label><input type="radio" name="growth" value="ค่อนข้างสมส่วน"> ค่อนข้างสมส่วน</label> <label><input type="radio" name="growth" value="ไม่สมส่วน"> ไม่สมส่วน</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
+                      <div class="form-group"> <label id="mentalHealth-label">9. สุขภาพจิต</label> <div class="radio-group" role="radiogroup" aria-labelledby="mentalHealth-label"> <label><input type="radio" name="mentalHealth" value="ร่าเริง แจ่มใส" required> ร่าเริง แจ่มใส</label> <label><input type="radio" name="mentalHealth" value="ปกติ"> ปกติ</label> <label><input type="radio" name="mentalHealth" value="ซึมเศร้า/วิตกกังวล"> ซึมเศร้า/วิตกกังวล</label> </div><span class="error-message" data-default-error="กรุณาเลือกตัวเลือก">กรุณาเลือกตัวเลือก</span> </div>
 					  <div class="button-group"> <button type="button" class="prev-btn" onclick="prevStep()"><i class="fas fa-arrow-left"></i> ย้อนกลับ</button> <button type="button" class="next-btn" onclick="nextStep()">ถัดไป <i class="fas fa-arrow-right"></i></button> </div>
                  </div>
                  <div class="form-step" data-step="6">
@@ -453,7 +454,7 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
 
 <script>
     // --- CONFIGURATION ---
-    const webAppBaseUrl = 'https://script.google.com/macros/s/AKfycbw-maCOVmwgrY27uIjBZjqitCihcHVY9O4cSvfbxNtuOIBVnZMz1MXgy3e_R9UuOudTJQ/exec'; // <--- ใส่ URL ที่ถูกต้อง! [cite: 1]
+    const webAppBaseUrl = 'https://script.google.com/macros/s/AKfycbwubeUpiVyf0Ws_lDKVWUxfXfXWO75sRpWLD4-19VS8bmvy3buvwbU7V6KzSQ2GttaO/exec'; // <--- ใส่ URL ที่ถูกต้อง! [cite: 1]
     const submitAppsScriptUrl = webAppBaseUrl;
     const fetchDataUrl = webAppBaseUrl;
 
@@ -478,15 +479,15 @@ body > .container-fluid:first-of-type { /* เลือก .container-fluid แ�
 
 	async function askUserRole() {
     const { value: role } = await Swal.fire({
-        title: 'ประเภทผู้ใช้งาน',
+        title: '<h6>ประเภทผู้ใช้งาน</h6>',
         text: 'กรุณาเลือกประเภทผู้ใช้งาน',
         icon: 'question',
         showDenyButton: true, // ปุ่มสำหรับนักเรียน
         showConfirmButton: true, // ปุ่มสำหรับครู
-        confirmButtonText: '<i class="fas fa-chalkboard-teacher"></i> ครู',
-        denyButtonText: '<i class="fas fa-user-graduate"></i> นักเรียน',
-        confirmButtonColor: '#3085d6',
-        denyButtonColor: '#06d6a0', // สีเขียวสำหรับนักเรียน
+        confirmButtonText: '<i class="fas fa-chalkboard-teacher"></i> สำหรับครู',
+        denyButtonText: '<i class="fas fa-user-graduate"></i> สำหรับนักเรียน',
+        confirmButtonColor: '#062cd6',
+        denyButtonColor: '#d60667', // สีเขียวสำหรับนักเรียน
         allowOutsideClick: false,
         allowEscapeKey: false,
 		footer: '<div style="text-align: center;background-color:#faff99;cursor:pointer; padding: 10px 0; margin-top: 0px; border-top: 0px solid #e0e0e0; font-size: 0.9em; color: #555; width: 100%;"> ::Created and Develop by <a href="https://line.me/ti/p/3F7VGrqgUr" target="_blank">KT|Tanasarn Sirak </a>::</div>'
@@ -994,12 +995,135 @@ function showClassSummaryAlert(selectedClass, allStudents) {
                 `⛔ยังไม่บันทึก ::  <b>&nbsp; &nbsp; &nbsp;  ${notRecordedInClass}&nbsp; &nbsp; &nbsp;  </b>  คน<br>` +
                 `💯รวมทั้งหมด ::  <b>&nbsp; &nbsp; &nbsp;  ${totalInClass}&nbsp; &nbsp; &nbsp;  </b>  คน <hr style="height:6px;border-width:0;color:#fc0834;background-color:#fc0834">`,
             showCloseButton: true,
+			showCancelButton: true,
+			cancelButtonText: '<i class="fa fa-close" style="font-size:16px"></i> ปิด',
+			cancelButtonColor: "#DD6B55",
+			cancelButtonColor: "#DD6B55",
             focusConfirm: false,
-            confirmButtonText: '<i class="fas fa-thumbs-up"></i> รับทราบ!',
+            confirmButtonText: '<i class="fas fa-thumbs-up"></i> พิมพ์รายงานสรุป!',
             confirmButtonAriaLabel: 'รับทราบ',
-        });
+        }).then((result) => {
+                    if (result.isConfirmed) {
+						printClassSummaryReport(selectedClass);
+						printClassSummaryReport2(selectedClass);
+                        }
+				});
+			}
+		}
+
+
+
+
+
+
+
+
+// ภายในไฟล์ HTML (<script> tag)  ปริ้นสรุปรายห้อง
+
+function printClassSummaryReport(className) {
+    if (!fetchDataUrl || fetchDataUrl.includes('YOUR_DEPLOYED_WEB_APP_URL_HERE')) {
+        Swal.fire('Error', 'Web App URL (fetchDataUrl) is not configured correctly in HTML.', 'error');
+        return;
     }
+
+    Swal.fire({
+        title: 'กำลังสร้างรายงานสรุปห้อง...',
+        text: 'กรุณารอสักครู่ ระบบกำลังประมวลผลและสร้างไฟล์ PDF สำหรับห้อง ' + className,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    const url = `${fetchDataUrl}?action=generateClassSummaryPdf&className=${encodeURIComponent(className)}&t=${new Date().getTime()}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    let errorMsg = `HTTP ${response.status}: ${response.statusText}`;
+                    try {
+                        const jsonError = JSON.parse(text);
+                        if (jsonError && jsonError.message) errorMsg = jsonError.message;
+                    } catch (e) { errorMsg = text.substring(0, 200) || errorMsg; }
+                    throw new Error(errorMsg);
+                });
+            }
+            return response.json();
+        })
+        .then(result => {
+            Swal.close(); // ปิด SweetAlert "กำลังสร้าง..."
+            if (result && result.status === 'success' && result.pdfUrl) {
+                window.open(result.pdfUrl, '_blank'); // เปิด PDF ในแท็บใหม่
+            } else {
+                throw new Error(result.message || 'ไม่ได้รับ URL ของ PDF สรุปข้อมูลห้อง');
+            }
+        })
+        .catch(error => {
+            Swal.close(); // ปิด SweetAlert "กำลังสร้าง..."
+            console.error('Error generating class summary PDF:', error);
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด!',
+                html: `ไม่สามารถสร้างไฟล์ PDF สรุปข้อมูลห้องได้:<br><small>${error.message}</small>`,
+                icon: 'error'
+            });
+        });
 }
+
+
+
+// ภายในไฟล์ HTML (<script> tag)  ปริ้นสรุปรายห้อง
+
+function printClassSummaryReport2(className) {
+    if (!fetchDataUrl || fetchDataUrl.includes('YOUR_DEPLOYED_WEB_APP_URL_HERE')) {
+        Swal.fire('Error', 'Web App URL (fetchDataUrl) is not configured correctly in HTML.', 'error');
+        return;
+    }
+
+    Swal.fire({
+        title: 'กำลังสร้างรายงานสรุปห้อง...',
+        text: 'กรุณารอสักครู่ ระบบกำลังประมวลผลและสร้างไฟล์ PDF สำหรับห้อง ' + className,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    const url = `${fetchDataUrl}?action=generateClassSummaryPdf2&className=${encodeURIComponent(className)}&t=${new Date().getTime()}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    let errorMsg = `HTTP ${response.status}: ${response.statusText}`;
+                    try {
+                        const jsonError = JSON.parse(text);
+                        if (jsonError && jsonError.message) errorMsg = jsonError.message;
+                    } catch (e) { errorMsg = text.substring(0, 200) || errorMsg; }
+                    throw new Error(errorMsg);
+                });
+            }
+            return response.json();
+        })
+        .then(result => {
+            Swal.close(); // ปิด SweetAlert "กำลังสร้าง..."
+            if (result && result.status === 'success' && result.pdfUrl) {
+                window.open(result.pdfUrl, '_blank'); // เปิด PDF ในแท็บใหม่
+            } else {
+                throw new Error(result.message || 'ไม่ได้รับ URL ของ PDF สรุปข้อมูลห้อง');
+            }
+        })
+        .catch(error => {
+            Swal.close(); // ปิด SweetAlert "กำลังสร้าง..."
+            console.error('Error generating class summary PDF:', error);
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด!',
+                html: `ไม่สามารถสร้างไฟล์ PDF สรุปข้อมูลห้องได้:<br><small>${error.message}</small>`,
+                icon: 'error'
+            });
+        });
+}
+
 
 
 
@@ -1170,7 +1294,7 @@ function showImageModal(imageUrl) {
         // Header with Image
         html += `<div class="data-popup-header">
                     <img src="${studentImageSrc}" alt="รูปนักเรียน" onerror="this.onerror=null;this.src='${defaultUserImage}';">
-                    <h3>${data.fullName || 'ไม่พบชื่อ'} (${data.studentId || 'N/A'})</h3>
+                    <h3>${data.fullName || 'ไม่พบชื่อ'} (รหัสประจำตัว : ${data.studentId || 'N/A'})</h3>
                  </div>`;
 
         html += '<h4>ข้อมูลทั่วไป</h4><dl>';
@@ -1189,11 +1313,11 @@ function showImageModal(imageUrl) {
         html += createDlItem('ภาษาไทย', data.thaiKnowledge);
         html += createDlItem('คณิตศาสตร์', data.mathKnowledge);
 		html += createDlItem('วิทยาศาสตร์', data.scienceKnowledge);
-        html += createDlItem('ภาษาต่างประเทศ', data.foreignLangKnowledge);
-        html += createDlItem('สังคมศึกษา', data.socialStudiesKnowledge);
+        html += createDlItem('ภาษาต่างประเทศ', data.foreignKnowledge);
+        html += createDlItem('สังคมศึกษา', data.socialKnowledge);
         html += createDlItem('ศิลปะ', data.artKnowledge);
-        html += createDlItem('สุขศึกษา/พละ', data.healthPeKnowledge);
-        html += createDlItem('การงานอาชีพ', data.careerTechKnowledge);
+        html += createDlItem('สุขศึกษา/พละ', data.healthKnowledge);
+        html += createDlItem('การงานอาชีพ', data.careerKnowledge);
         html += '</dl>';
 
         html += '<h4>ความสามารถ/ประสบการณ์</h4><dl>';
@@ -1233,10 +1357,14 @@ function showImageModal(imageUrl) {
         html += createDlItem('ข้อเสนอแนะ', data.suggestions);
         html += createDlItem('บันทึกเมื่อ', data.timestamp); // Show timestamp
         html += '</dl>';
+		
+        html += `<div class="row">
+                  <h4>สรุปผลการแบ่งกลุ่ม : </h4> <h5>${data.studentGroup}</h5>
+                 </div>`;
 
         // Action Buttons (Print)
         html += `<div class="data-popup-actions">
-                    <button onclick="printElement('printable-data-area')" class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์ข้อมูล</button>
+                    <button onclick="openPdf('${data.studentId}', this)" class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์ข้อมูล</button>
                  </div>`;
 
         html += '</div>'; // Close printable-data-area
